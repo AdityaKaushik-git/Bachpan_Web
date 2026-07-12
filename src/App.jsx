@@ -26,7 +26,7 @@ const sortedImages = Object.entries(imageImports)
   .map(([path, url]) => ({
     path,
     src: url,
-    alt: /coll?ge event/i.test(path) ? 'College event moment' : 'School advertisement visual',
+    alt: /college event/i.test(path) ? 'School event moment' : 'School advertisement visual',
   }));
 
 const advertisementPhotos = sortedImages.filter((image) => !/coll?ge event/i.test(image.path));
