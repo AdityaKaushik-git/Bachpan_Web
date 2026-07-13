@@ -28,6 +28,9 @@ const sortedImages = Object.entries(imageImports)
     src: url,
     alt: /college event/i.test(path) ? 'School event moment' : 'School advertisement visual',
   }));
+  const schoolLogo = sortedImages.find((img) =>
+  img.path.includes("logo.png")
+)?.src;
 
 const advertisementPhotos = sortedImages.filter((image) => !/coll?ge event/i.test(image.path));
 const heroPhotos = advertisementPhotos.slice(0, 8);
@@ -130,9 +133,13 @@ const App = () => {
       <header className="sticky top-0 z-50 bg-white shadow-sm">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-3">
-            <div className="rounded-2xl bg-blue-900 px-3 py-2 text-white text-sm font-semibold uppercase tracking-[0.2em]">
-              BPS
-            </div>
+            {schoolLogo ? (
+              <img src={schoolLogo} alt="School Logo" className="h-16 w-16 rounded-2xl" />
+            ) : (
+              <div className="rounded-2xl bg-blue-900 px-3 py-2 text-white text-sm font-semibold uppercase tracking-[0.2em]">
+                BPS
+              </div>
+            )}
             <div>
               <p className="text-sm font-semibold">Bachpan Public Secondary School</p>
               <p className="text-xs text-slate-500">Behind ICICI Bank, Karamchari Colony, Gangapur City</p>
